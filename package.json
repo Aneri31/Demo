@@ -1,16 +1,17 @@
-
 {
-    "name": "project-name",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-      "test": "npx playwright test"
-    },
-    "dependencies": {
-      "@playwright/test": "^1.17.0" 
-    },
-    "author": "",
-    "license": "ISC"
+  "name": "project-name",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.17.0"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.45.0"
   }
-  
+}
