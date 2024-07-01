@@ -1,5 +1,5 @@
 const { test, chromium } = require('@playwright/test');
-const { baseURL } = require('../Configuration/config');
+const { baseURL } = require('../Configuration/config'); // Adjust path as per your project structure
 const CommonUtils = require('./commonutils');
 
 class AmazonTests extends CommonUtils {
@@ -16,47 +16,25 @@ class AmazonTests extends CommonUtils {
 
 test.describe('Amazon Product Tests', () => {
   let browser;
-  let page;
-  let amazonTests;
 
   test.beforeAll(async () => {
-    browser = await chromium.launch({ headless: false });
-  });
-
-  test.beforeEach(async () => {
-    page = await browser.newPage();
-    amazonTests = new AmazonTests(page);
-  });
-
-  test.afterEach(async () => {
-    await page.close();
+    browser = await chromium.launch({
+      // Ensure Playwright can find Chromium executable
+      executablePath: process.env.CHROMIUM_PATH || undefined,
+      headless: false // Set to true for non-visual environments like CI/CD
+    });
   });
 
   test.afterAll(async () => {
     await browser.close();
   });
 
-  test('Login and Search Product', async () => {
+  test('Login and Search Product', async ({ page }) => {
+    const amazonTests = new AmazonTests(page);
     await amazonTests.searchProduct('iPhone 14');
   });
-  
-  test('Product', async () => {
-    await console.log("this is demo");
-  });
 
-  test('Product1', async () => {
-    await console.log("this is demo1");
-  });
-
-  test('Product2', async () => {
-    await console.log("this is demo2");
-  });
-
-  test('Product23', async () => {
-    await console.log("this is demo4");
-  });
-
-  test('Product293', async () => {
-    await console.log("this is demo6");
+  test('Other Tests', async ({ page }) => {
+    // Other test cases
   });
 });
