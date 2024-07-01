@@ -21,7 +21,7 @@ test.describe('Amazon Product Tests', () => {
     browser = await chromium.launch({
       // Ensure Playwright can find Chromium executable
       executablePath: process.env.CHROMIUM_PATH || undefined,
-      headless: false // Set to true for non-visual environments like CI/CD
+      headless: true // Set to true for non-visual environments like CI/CD
     });
   });
 
